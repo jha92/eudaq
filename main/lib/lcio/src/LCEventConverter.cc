@@ -47,9 +47,15 @@ namespace eudaq{
       }
       d2->parameters().setValue("EventFlag", (int)d1->GetFlag());
       d2->parameters().setValue("DeviceNumber", (int)d1->GetDeviceN());
-      if(d1->IsFlagTrigger()){
+      
+      //add event type for EUTel
+      d2->parameters().setValue("EventType", 2);
+
+      //add triggerN = eventN
+      d2->parameters().setValue("TriggerNumber", (int)d1->GetEventN());
+      /*if(d1->IsFlagTrigger()){
 	d2->parameters().setValue("TriggerNumber", (int)d1->GetTriggerN());
-      }
+	}*/
       if(d1->IsFlagTimestamp()){
 	d2->parameters().setValue("TimestampBegin", (int)d1->GetTimestampBegin());
 	d2->parameters().setValue("TimestampEnd", (int)d1->GetTimestampEnd());
